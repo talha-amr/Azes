@@ -22,5 +22,35 @@ body {
   padding: 0px;
 }
 .my-container {
-  @apply  mx-auto px-4 sm:px-6 lg:px-[3vw];
+  @apply  mx-auto px-4 sm:px-6 lg:px-[5vw];
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-container {
+  animation: marquee 20s linear infinite;
+  width: max-content;
+}
+
+
+
+/* Performance optimization */
+.marquee-container {
+  will-change: transform;
+}
+
+/* Ensure smooth rendering */
+.marquee-wrapper {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+.theme-torquoise
+{
+    @apply text-[#085859];
 }
