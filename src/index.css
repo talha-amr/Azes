@@ -54,3 +54,14 @@ body {
 {
     @apply text-[#085859];
 }
+.theme-blue
+{
+    @apply bg-[#0C131B];
+}
+.text-gradient {
+  background: linear-gradient(251.99deg, #B89C56 -0.57%, #F2D7BC 50.93%, #B89C56 99.43%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* for other browsers */
+  color: transparent;
+}

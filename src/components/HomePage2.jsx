@@ -3,7 +3,7 @@ import Button from './Button'
 const HomePage2 = () => {
     return (
         <>
-            <div className='pt-[3vw]'>
+            <div className='py-[9vw]'>
                 <div className="my-container ">
                     <div className="flex flex-row gap-[2vw] items-center justify-between ">
                         {/* Left Content - 50% */}
@@ -49,7 +49,6 @@ const HomePage2 = () => {
                             </div>
                         </div>
         
-
 
                     </div>
                 </div>

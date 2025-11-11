@@ -4,7 +4,7 @@ const HomePage = () => {
     return (
         <>
             <div className='my-container pt-[9.5vw]'>
-                <div className="space-y-2 ">
+                <div className="space-y-[1vw] ">
                     <h1 className='text-[4vw] font-bold tracking-tight '>Explore the Digital Horizon</h1>
                     <p className='font-regular text-[2vw] w-[30%]'>Elevate Your Experience with Our Architectural Vision</p>
                 </div>
