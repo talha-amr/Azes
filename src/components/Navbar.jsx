@@ -19,55 +19,66 @@ const Navbar = () => {
                     <div className="flex-1 flex justify-between items-baseline text-[1vw]">
 
                         {/* Center: Navigation Links */}
-                        <div className="flex-1 flex justify-between items-center">
-
-                            {/* Center: Navigation Links */}
-                            <div className="flex justify-center items-center gap-[1.9vw]">
-
-                                {/* Active link (no bullet, but reserve space) */}
-                                <a href="#home" className=" flex items-center">
-
+                        <div className="flex justify-center items-center gap-[1.9vw]">
+                            {/* Active link (Home) */}
+                            <a href="#home" className="group flex items-center relative overflow-hidden">
+                                <p className="block transition-transform duration-500 group-hover:-translate-y-full">
                                     Home
-                                </a>
-                                <span className=" text-[2.5vw] leading-none flex items-center">•</span>
-                                {/* Inactive links (with bullet) */}
-                                <a href="#about" className=" flex items-center">
+                                </p>
+                                <p className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0">
+                                    Home
+                                </p>
+                            </a>
+                            <span className="text-[2.5vw] leading-none flex items-center">•</span>
 
+                            {/* Inactive link (About) */}
+                            <a href="#about" className="group flex items-center relative overflow-hidden">
+                                <p className="block transition-transform duration-500 group-hover:-translate-y-full">
                                     About
-                                </a>
-                                <span className=" text-[2.5vw] leading-none flex items-center">•</span>
-                                <a href="#contact" className=" flex items-center">
+                                </p>
+                                <p className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0">
+                                    About
+                                </p>
+                            </a>
+                            <span className="text-[2.5vw] leading-none flex items-center">•</span>
 
+                            {/* Inactive link (Contact) */}
+                            <a href="#contact" className="group flex items-center relative overflow-hidden">
+                                <p className="block transition-transform duration-500 group-hover:-translate-y-full">
                                     Contact
-                                </a>
-
-                            </div>
-                        </div>
-
-                        {/* Right: Menu Text + Icon */}
-                        <div className="flex items-center  gap-[1.9vw] cursor-pointer flex-shrink-0">
-                            <div className=" text-[1vw] font-regular">Menu</div>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                              
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="1"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="text-black w-[2vw]"
-                            >
-                                <line x1="4" y1="9" x2="20" y2="9" />
-                                <line x1="4" y1="15" x2="20" y2="15" />
-                            </svg>
-                        </div>
+                                </p>
+                                <p className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0">
+                                    Contact
+                                </p>
+                            </a>
+                    
 
                     </div>
 
+                    {/* Right: Menu Text + Icon */}
+                    <div className="flex items-center  gap-[1.9vw] cursor-pointer flex-shrink-0">
+                        <div className=" text-[1vw] font-regular">Menu</div>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="text-black w-[2vw]"
+                        >
+                            <line x1="4" y1="9" x2="20" y2="9" />
+                            <line x1="4" y1="15" x2="20" y2="15" />
+                        </svg>
+                    </div>
+
                 </div>
+
             </div>
-        </nav>
+        </div>
+        </nav >
     );
 };
 
