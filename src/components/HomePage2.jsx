@@ -8,7 +8,7 @@ const HomePage2 = () => {
                     <div className="flex flex-row gap-[2vw] items-center justify-between ">
                         {/* Left Content - 50% */}
                         <div className="w-1/2">
-                            <p className="text-gray-400 text-[2vw] uppercase tracking-wider mb-[1.9vw]">ABOUT</p>
+                            <p className="text-[#9B9EA2] font-light text-[2vw] uppercase  mb-[1.9vw]">ABOUT</p>
 
                             <h2 className="text-[1.8vw]  font-medium text-gray-900 mb-[2vw] leading-tight">
                                 Azes can be trusted to deliver residential and commercial groundworks projects, concrete substructures and superstructures to the highest quality standards, on time and to budget, no matter how technically demanding or logistically complicated.
@@ -20,7 +20,7 @@ const HomePage2 = () => {
                                 with curated art installations, fostering dynamic cultural interactions.
                             </p>
 
-                            <Button variant="outline" className='text-[1.2vw]' onClick={() => console.log('More details clicked')}>
+                            <Button variant="outline" className='text-[1.2vw] border-[#085859] text-[#085859] hover:bg-[#085859] hover:text-white' onClick={() => console.log('More details clicked')}>
                                 MORE DETAIL
                             </Button>
                         </div>

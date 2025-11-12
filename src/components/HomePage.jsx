@@ -9,7 +9,19 @@ const HomePage = () => {
                     <p className='font-regular text-[2vw] w-[30%]'>Elevate Your Experience with Our Architectural Vision</p>
                 </div>
             </div>
-            <img src="/images/home-1.png" alt="" className='w-full pt-[3.5vw]' />
+            <video
+                src="/images/video.mp4"
+                className="w-full pt-[3.5vw] object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                
+            >
+                Your browser does not support the video tag.
+            </video>
+        
+
             <div className=" w-full overflow-hidden  h-[13vw]  flex items-center marquee-wrapper  ">
                 <div className="flex whitespace-nowrap marquee-container">
                     {/* First set */}

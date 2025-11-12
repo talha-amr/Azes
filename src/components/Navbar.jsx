@@ -11,12 +11,12 @@ const Navbar = () => {
                         <img
                             src="/images/logo-original.png"
                             alt="Logo"
-                            className="h-[2.7vw] w-auto"
+                            className="h-[2.3vw] w-auto"
                         />
                     </div>
 
                     {/* Center + Right */}
-                    <div className="flex-1 flex justify-between items-baseline text-[1.2vw]">
+                    <div className="flex-1 flex justify-between items-baseline text-[1vw]">
 
                         {/* Center: Navigation Links */}
                         <div className="flex-1 flex justify-between items-center">
@@ -46,7 +46,7 @@ const Navbar = () => {
 
                         {/* Right: Menu Text + Icon */}
                         <div className="flex items-center  gap-[1.9vw] cursor-pointer flex-shrink-0">
-                            <div className=" font-regular">Menu</div>
+                            <div className=" text-[1vw] font-regular">Menu</div>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                               
@@ -56,7 +56,7 @@ const Navbar = () => {
                                 strokeWidth="1"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="text-black w-[3.1vw]"
+                                className="text-black w-[2vw]"
                             >
                                 <line x1="4" y1="9" x2="20" y2="9" />
                                 <line x1="4" y1="15" x2="20" y2="15" />
