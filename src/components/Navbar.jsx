@@ -52,9 +52,16 @@ const Navbar = () => {
                                 </p>
                             </a>
                     
-
+                           
                     </div>
-
+                     <a href="#contact" className="group flex items-center relative overflow-hidden">
+                                <p className="block transition-transform duration-500 group-hover:-translate-y-full">
+                                    Download Company Profile
+                                </p>
+                                <p className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0">
+                                    Download Company Profile
+                                </p>
+                            </a>
                     {/* Right: Menu Text + Icon */}
                     <div className="flex items-center  gap-[1.9vw] cursor-pointer flex-shrink-0">
                         <div className=" text-[1vw] font-regular">Menu</div>

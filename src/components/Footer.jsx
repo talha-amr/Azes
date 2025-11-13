@@ -82,16 +82,11 @@ export default function Footer() {
                         <h3 className="text-[1.2vw] font-semibold mb-[1.5vw] text-white">
                             ADDRESS
                         </h3>
-                        <div className="space-y-[2vw] text-[0.9vw]">
-                            <div>
-                                <h4 className="font-semibold mb-[0.5vw]">PAKISTAN</h4>
-                                <p className="white leading-snug text-[0.9vw]">
-                                    613-F, Gulshan - e - Ravi Lahore Pakistan
-                                </p>
-                            </div>
+                        <div className="space-y-[2vw] text-[1.1vw]">
+                            
                             <div>
                                 <h4 className="font-semibold mb-[0.5vw]">DUBAI</h4>
-                                <p className="text-white leading-snug text-[0.9vw]">
+                                <p className="text-white leading-snug text-[1vw]">
                                     Office No. 318, Mashreq Building, Al Suq Al Kabeer, Bur Dubai, UAE.
                                 </p>
                             </div>
