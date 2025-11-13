@@ -27,6 +27,18 @@ const HomePage4 = () => {
       subtitle: "Work start date 2023 / End date 2024",
       onDetailClick: (project) => console.log("More details clicked", project),
     },
+    {
+      image: "/images/home-feature-2.png",
+      title: "Commercial Space Design",
+      subtitle: "Work start date 2023 / End date 2024",
+      onDetailClick: (project) => console.log("More details clicked", project),
+    },
+    {
+      image: "/images/home-feature-2.png",
+      title: "Commercial Space Design",
+      subtitle: "Work start date 2023 / End date 2024",
+      onDetailClick: (project) => console.log("More details clicked", project),
+    }
   ];
 
   // --- GSAP Animation - Applied to parent container ---
