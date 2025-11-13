@@ -85,14 +85,14 @@ export default function Footer() {
                         <div className="space-y-[2vw] text-[0.9vw]">
                             <div>
                                 <h4 className="font-semibold mb-[0.5vw]">PAKISTAN</h4>
-                                <p className="white leading-snug">
-                                    63LF, DLF-III PHASE-E - RAWALPINDI PAKISTAN
+                                <p className="white leading-snug text-[0.9vw]">
+                                    613-F, Gulshan - e - Ravi Lahore Pakistan
                                 </p>
                             </div>
                             <div>
                                 <h4 className="font-semibold mb-[0.5vw]">DUBAI</h4>
-                                <p className="text-white leading-snug">
-                                    OFFICE NO. 338, MASH-REG BUILDING, AL SIJO AL KABEER, BUR DUBAI, UAE
+                                <p className="text-white leading-snug text-[0.9vw]">
+                                    Office No. 318, Mashreq Building, Al Suq Al Kabeer, Bur Dubai, UAE.
                                 </p>
                             </div>
                         </div>
@@ -114,10 +114,10 @@ export default function Footer() {
                                 </span>
                                 <span className="inline-block relative overflow-hidden">
                                     <span className="block transition-transform duration-500 group-hover:-translate-y-full">
-                                        +971586996635
+                                        +971585956635
                                     </span>
                                     <span className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0 text-teal-400">
-                                        +971586996635
+                                        +971585956635
                                     </span>
                                 </span>
                             </a>
@@ -130,10 +130,10 @@ export default function Footer() {
                                 </span>
                                 <span className="inline-block relative overflow-hidden">
                                     <span className="block transition-transform duration-500 group-hover:-translate-y-full">
-                                        ALI@AZES-INTL.COM
+                                        ali@azes-intl.com
                                     </span>
                                     <span className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0 text-teal-400">
-                                        ALI@AZES-INTL.COM
+                                        ali@azes-intl.com
                                     </span>
                                 </span>
                             </a>
