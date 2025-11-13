@@ -20,7 +20,7 @@ export default function Footer() {
         tl.from(".animate-heading", {
             y: 50,
             opacity: 0,
-            duration: 1.2, // slower
+            duration: 1.2,
             ease: "power3.out",
         });
 
@@ -30,14 +30,13 @@ export default function Footer() {
             {
                 y: 20,
                 opacity: 0,
-                stagger: 0.3, // more space between animations
-                duration: 0.8, // slower for each item
+                stagger: 0.3,
+                duration: 0.8,
                 ease: "power3.out",
             },
-            "-=0.8" // start slightly overlapping heading animation
+            "-=0.8"
         );
     }, []);
-
 
     return (
         <footer
@@ -64,9 +63,14 @@ export default function Footer() {
                                 <li key={item}>
                                     <a
                                         href="#"
-                                        className="hover:text-teal-400 transition-all duration-300"
+                                        className="group inline-block relative overflow-hidden"
                                     >
-                                        {item}
+                                        <span className="block transition-transform duration-500 group-hover:-translate-y-full">
+                                            {item}
+                                        </span>
+                                        <span className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0 ">
+                                            {item}
+                                        </span>
                                     </a>
                                 </li>
                             ))}
@@ -103,21 +107,35 @@ export default function Footer() {
                         <div className="flex justify-start items-center gap-[2vw] ">
                             <a
                                 href="tel:+971586996635"
-                                className="flex items-center gap-[1vw] text-[1vw] hover:text-teal-400 transition-all duration-300"
+                                className="group flex items-center gap-[1vw] text-[1vw] transition-all duration-300"
                             >
-                                <span className="w-[3vw] h-[3vw] bg-[#085859] rounded-full flex items-center justify-center">
+                                <span className="w-[3vw] h-[3vw] bg-[#085859] rounded-full flex items-center justify-center group-hover:bg-teal-400 transition-all duration-300">
                                     <Phone className="w-[1.2vw] h-[1.2vw]" />
                                 </span>
-                                +971586996635
+                                <span className="inline-block relative overflow-hidden">
+                                    <span className="block transition-transform duration-500 group-hover:-translate-y-full">
+                                        +971586996635
+                                    </span>
+                                    <span className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0 text-teal-400">
+                                        +971586996635
+                                    </span>
+                                </span>
                             </a>
                             <a
                                 href="mailto:ALI@AZES-INTL.COM"
-                                className="flex items-center gap-[1vw] text-[1vw] hover:text-teal-400 transition-all duration-300"
+                                className="group flex items-center gap-[1vw] text-[1vw] transition-all duration-300"
                             >
-                                <span className="w-[3vw] h-[3vw] bg-[#085859] rounded-full flex items-center justify-center">
+                                <span className="w-[3vw] h-[3vw] bg-[#085859] rounded-full flex items-center justify-center group-hover:bg-teal-400 transition-all duration-300">
                                     <Mail className="w-[1.2vw] h-[1.2vw]" />
                                 </span>
-                                ALI@AZES-INTL.COM
+                                <span className="inline-block relative overflow-hidden">
+                                    <span className="block transition-transform duration-500 group-hover:-translate-y-full">
+                                        ALI@AZES-INTL.COM
+                                    </span>
+                                    <span className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0 text-teal-400">
+                                        ALI@AZES-INTL.COM
+                                    </span>
+                                </span>
                             </a>
                         </div>
                     </div>
@@ -130,17 +148,37 @@ export default function Footer() {
                             <div className="flex flex-wrap items-center gap-[4vw] text-[0.99vw] text-white mb-[0.5vw]">
                                 <p>© 2024 AZES</p>
                                 <p>ALL RIGHTS RESERVED</p>
-                                <a href="#" className="hover:text-teal-400 transition">
-                                    LINKEDIN
+                                <a href="#" className="group inline-block relative overflow-hidden">
+                                    <span className="block transition-transform duration-500 group-hover:-translate-y-full">
+                                        LINKEDIN
+                                    </span>
+                                    <span className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0 ">
+                                        LINKEDIN
+                                    </span>
                                 </a>
-                                <a href="#" className="hover:text-teal-400 transition">
-                                    FACEBOOK
+                                <a href="#" className="group inline-block relative overflow-hidden">
+                                    <span className="block transition-transform duration-500 group-hover:-translate-y-full">
+                                        FACEBOOK
+                                    </span>
+                                    <span className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0 ">
+                                        FACEBOOK
+                                    </span>
                                 </a>
-                                <a href="#" className="hover:text-teal-400 transition">
-                                    INSTAGRAM
+                                <a href="#" className="group inline-block relative overflow-hidden">
+                                    <span className="block transition-transform duration-500 group-hover:-translate-y-full">
+                                        INSTAGRAM
+                                    </span>
+                                    <span className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0 ">
+                                        INSTAGRAM
+                                    </span>
                                 </a>
-                                <a href="#" className="hover:text-teal-400 transition">
-                                    YOUTUBE
+                                <a href="#" className="group inline-block relative overflow-hidden">
+                                    <span className="block transition-transform duration-500 group-hover:-translate-y-full">
+                                        YOUTUBE
+                                    </span>
+                                    <span className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0 ">
+                                        YOUTUBE
+                                    </span>
                                 </a>
                             </div>
 
@@ -154,7 +192,7 @@ export default function Footer() {
                         </div>
 
                         <button
-                            className="flex items-center gap-[0.5vw] whitespace-nowrap text-[0.9vw] bg-gradient-to-r from-[#B89C56] via-[#F2D7BC] to-[#B89C56] bg-clip-text text-transparent hover:opacity-80 transition"
+                            className="flex cursor-pointer items-center gap-[0.5vw] whitespace-nowrap text-[0.9vw] bg-gradient-to-r from-[#B89C56] via-[#F2D7BC] to-[#B89C56] bg-clip-text text-transparent hover:opacity-80 transition"
                             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                         >
                             BACK TO TOP

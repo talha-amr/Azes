@@ -1,10 +1,28 @@
-import React, { useRef } from 'react';
-import { ChevronRight } from 'lucide-react';
-import Button from './Button'
-
+import React, { useRef, useState, useEffect } from 'react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
+import Button from './Button';
 
 export const ProjectCarousel = ({ projects }) => {
   const scrollContainerRef = useRef(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+
+  const checkScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setShowLeftArrow(scrollLeft > 0);
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', checkScroll);
+      checkScroll();
+      return () => scrollContainer.removeEventListener('scroll', checkScroll);
+    }
+  }, []);
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
@@ -16,8 +34,18 @@ export const ProjectCarousel = ({ projects }) => {
     }
   };
 
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = scrollContainerRef.current.offsetWidth;
+      scrollContainerRef.current.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <div className="relative pl-[2vw]">
+    <div className="relative">
       <div 
         ref={scrollContainerRef}
         className="overflow-x-auto scrollbar-hide"
@@ -28,7 +56,7 @@ export const ProjectCarousel = ({ projects }) => {
             display: none;
           }
         `}</style>
-        <div className="flex gap-[2vw]" style={{ width: 'max-content' }}>
+        <div className="flex gap-[2vw] pl-[2vw] pr-[2vw]" style={{ width: 'max-content' }}>
           {projects.map((project, index) => (
             <div key={index} className="group" style={{ width: '51vw', flexShrink: 0 }}>
               <div className="relative overflow-hidden mb-[2vw] h-[32vw]">
@@ -65,14 +93,25 @@ export const ProjectCarousel = ({ projects }) => {
         </div>
       </div>
 
-      {/* Single Arrow Button on Right Side */}
+      {/* Left Arrow Button */}
+      <button
+        onClick={scrollLeft}
+        className={`absolute top-[50%] left-[1vw] transform -translate-y-1/2 flex items-center justify-center w-[4vw] h-[4vw] rounded-full bg-[#085859] text-white transition-all duration-200 ease-in-out z-10 ${
+          showLeftArrow ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <ChevronLeft className="w-[2vw] h-[2vw] text-white" />
+      </button>
+
+      {/* Right Arrow Button */}
       <button
         onClick={scrollRight}
-        className="absolute  top-[50%] right-[1vw] transform -translate-y-1/2  flex items-center justify-center w-[4vw] h-[4vw] rounded-full bg-[#085859] text-white transition-colors z-10"
+        className={`absolute top-[50%] right-[1vw] transform -translate-y-1/2 flex items-center justify-center w-[4vw] h-[4vw] rounded-full bg-[#085859] text-white transition-all duration-200 ease-in-out z-10 ${
+          showRightArrow ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
       >
         <ChevronRight className="w-[2vw] h-[2vw] text-white" />
       </button>
     </div>
   );
 };
-

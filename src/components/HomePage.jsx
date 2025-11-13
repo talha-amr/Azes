@@ -38,7 +38,7 @@ const HomePage = () => {
           <h1 className='text-[4vw] font-bold tracking-tight'>
             Explore the Digital Horizon
           </h1>
-          <p className='font-regular text-[2vw] w-[30%]'>
+          <p className='font-regular text-[2vw] w-[80%]'>
             Elevate Your Experience with Our Architectural Vision
           </p>
         </div>
