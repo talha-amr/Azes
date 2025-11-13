@@ -63,12 +63,12 @@ export const ProjectCarousel = ({ projects }) => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
                 <div className="absolute bottom-[2vw] right-[2vw]">
                   <Button 
                     variant="outline" 
-                    className='text-[1.2vw] border-white text-white hover:bg-white/50 ' 
+                    className='text-[1.2vw] border-white text-white hover:bg-white/50' 
                     onClick={() => project.onDetailClick?.(project)}
                   >
                     VIEW PROJECT
