@@ -50,7 +50,7 @@ const HomePage4 = () => {
       ease: "power3.out",
       scrollTrigger: {
         trigger: "#featured-section",
-        start: "20% 85%",
+        start: "30% 85%",
         toggleActions: "play none none none",
       },
     });
@@ -88,7 +88,10 @@ const HomePage4 = () => {
       </div>
 
       {/* Projects Grid */}
+      <div className="animate-section">
+
       <ProjectCarousel projects={projectsData} />
+      </div>
       <div className="pb-[6vw]"></div>
     </div>
   );
