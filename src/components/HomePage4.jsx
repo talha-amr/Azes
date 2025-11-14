@@ -55,7 +55,6 @@ const HomePage4 = () => {
     trigger: "#featured-section",
     start: "30% 85%",
     toggleActions: "play none none none",
-    markers: true,
   }
 });
 
@@ -104,7 +103,6 @@ tl.from(headingSplit.lines, {
         trigger: "#carousel",
         start: "50% 85%",
         toggleActions: "play none none none",
-        markers: true
       }
     });
 
