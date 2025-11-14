@@ -55,10 +55,10 @@ const Navbar = () => {
                            
                     </div>
                      <a href="#contact" className="group flex items-center relative overflow-hidden">
-                                <p className="block transition-transform duration-500 group-hover:-translate-y-full">
+                                <p className="block transition-transform font-semibold duration-500 group-hover:-translate-y-full">
                                     Download Company Profile
                                 </p>
-                                <p className="absolute top-0 left-0 transition-transform duration-500 translate-y-full group-hover:translate-y-0">
+                                <p className="absolute top-0 left-0 font-semibold transition-transform duration-500 translate-y-full group-hover:translate-y-0">
                                     Download Company Profile
                                 </p>
                             </a>
