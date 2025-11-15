@@ -17,7 +17,7 @@ export default function Footer({ theme = "main" }) {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: "#footer",
-                start: "30% 50%",
+                start: theme === "main" ? "30% 50%" : "450% 50%",
                 toggleActions: "play none none none",
             },
         });
