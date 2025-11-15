@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const InterDesign2 = () => {
     const containerRef = useRef();
     const [activeIndex, setActiveIndex] = useState(0);
+    const [imagesLoaded, setImagesLoaded] = useState(false);
 
     const sections = [
         {
@@ -47,23 +48,51 @@ const InterDesign2 = () => {
         }
     ];
 
+    // Preload all images
+    useEffect(() => {
+        const imagePromises = sections.map((section) => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = section.image;
+                img.onload = resolve;
+                img.onerror = reject;
+            });
+        });
+
+        Promise.all(imagePromises)
+            .then(() => {
+                setImagesLoaded(true);
+                // Refresh ScrollTrigger after images load
+                setTimeout(() => {
+                    ScrollTrigger.refresh();
+                }, 100);
+            })
+            .catch((error) => {
+                console.error("Error loading images:", error);
+                setImagesLoaded(true); // Continue anyway
+            });
+    }, []);
+
     useGSAP(() => {
+        if (!imagesLoaded) return;
+
         const ctx = gsap.context(() => {
             const cards = gsap.utils.toArray(".section-card");
 
             cards.forEach((card, i) => {
                 ScrollTrigger.create({
                     trigger: card,
-                    start: "top 80%",
+                    start: "-100% 80%",
                     end: "bottom 20%",
                     onEnter: () => setActiveIndex(i),
                     onEnterBack: () => setActiveIndex(i),
+                
                 });
             });
         }, containerRef);
 
         return () => ctx.revert();
-    }, { scope: containerRef });
+    }, { scope: containerRef, dependencies: [imagesLoaded] });
 
     return (
         <div className='theme-blue relative' ref={containerRef}>
@@ -78,15 +107,16 @@ const InterDesign2 = () => {
                                     key={section.id}
                                     src={section.image}
                                     alt=""
-                                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out ${
+                                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
                                         activeIndex === index 
                                             ? 'opacity-100 translate-y-0 scale-100' 
                                             : activeIndex > index 
-                                                ? 'opacity-0 -translate-y-8 scale-95'
-                                                : 'opacity-0 translate-y-8 scale-95'
+                                                ? 'opacity-0 -translate-y-12 scale-98'
+                                                : 'opacity-0 translate-y-12 scale-98'
                                     }`}
                                     style={{
-                                        zIndex: activeIndex === index ? 10 : index
+                                        zIndex: activeIndex === index ? 10 : index,
+                                        willChange: 'transform, opacity'
                                     }}
                                 />
                             ))}
@@ -96,7 +126,7 @@ const InterDesign2 = () => {
                     {/* RIGHT SIDE - STICKY CONTENT */}
                     <div className='w-[50%] h-full flex flex-col justify-center relative pr-[8vw]'>
                         {/* STICKY HOW IT WORKS */}
-                        <div className="absolute  top-[7vw] left-0 z-30">
+                        <div className="absolute top-[7vw] left-0 z-30">
                             <p className='text-white/50 text-[1.3vw] tracking-wide'>HOW IT WORKS</p>
                         </div>
 
@@ -105,15 +135,16 @@ const InterDesign2 = () => {
                             {sections.map((section, index) => (
                                 <div 
                                     key={section.id}
-                                    className={`absolute inset-0 flex flex-col justify-center transition-all duration-700 ease-out ${
+                                    className={`absolute inset-0 flex flex-col justify-center transition-all duration-1000 ease-in-out ${
                                         activeIndex === index 
                                             ? 'opacity-100 translate-y-0' 
                                             : activeIndex > index 
-                                                ? 'opacity-0 -translate-y-8'
-                                                : 'opacity-0 translate-y-8'
+                                                ? 'opacity-0 -translate-y-12'
+                                                : 'opacity-0 translate-y-12'
                                     }`}
                                     style={{
-                                        zIndex: activeIndex === index ? 10 : index
+                                        zIndex: activeIndex === index ? 10 : index,
+                                        willChange: 'transform, opacity'
                                     }}
                                 >
                                     <p className='text-gradient text-[3.5vw] leading-[1.1] font-semibold w-[70%]'>
@@ -134,7 +165,7 @@ const InterDesign2 = () => {
                             {sections.map((_, i) => (
                                 <div
                                     key={i}
-                                    className={`w-[1.9vw] h-[0.2vw] rounded-full transition-all duration-300 ${activeIndex === i ? 'bg-white' : 'bg-white/30'}`}
+                                    className={`w-[1.9vw] h-[0.2vw] rounded-full transition-all duration-500 ease-in-out ${activeIndex === i ? 'bg-white' : 'bg-white/30'}`}
                                 ></div>
                             ))}
                         </div>
