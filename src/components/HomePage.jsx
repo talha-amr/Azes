@@ -33,7 +33,7 @@ const HomePage = () => {
   return (
     <>
       {/* Header Section */}
-      <div className='my-container pt-[9.5vw]'>
+      <div className='my-container pt-[15vw]'>
         <div className="space-y-[1vw] mb-[3vw]">
           <h1 className='text-[4vw] font-bold tracking-tight'>
             Explore the Digital Horizon
