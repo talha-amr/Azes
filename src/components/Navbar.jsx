@@ -11,11 +11,13 @@ const Navbar = ({ theme = "main" }) => {
 
           {/* Left: Logo */}
           <div className="flex-shrink-0 w-[55%]">
-            <img
-              src={isMain ? "/images/logo-original.png" : "/images/main-logo-golden.png"}
-              alt="Logo"
-              className="h-[2.3vw] w-auto"
-            />
+            <Link to="/">
+              <img
+                src={isMain ? "/images/logo-original.png" : "/images/main-logo-golden.png"}
+                alt="Logo"
+                className="h-[2.3vw] w-auto"
+              />
+            </Link>
           </div>
 
           {/* Center + Right */}
@@ -76,7 +78,7 @@ const Navbar = ({ theme = "main" }) => {
                 strokeWidth="1"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className={`${isMain?"text-black":"text-white"} w-[2vw]`}
+                className={`${isMain ? "text-black" : "text-white"} w-[2vw]`}
               >
                 <line x1="4" y1="9" x2="20" y2="9" />
                 <line x1="4" y1="15" x2="20" y2="15" />
