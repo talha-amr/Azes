@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
-import Navbar from './Navbar';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const InterDesign1 = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useGSAP(() => {
+    if (!imageLoaded) return; // Wait for image to load
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".interior-section",
@@ -61,14 +68,22 @@ const InterDesign1 = () => {
       },
       "-=0.5"
     );
-  }, []);
+  }, [imageLoaded]);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+    // Refresh ScrollTrigger after image loads
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+  };
 
   return (
     <div className='min-h-screen theme-blue'>
       
       
       <div className="interior-section relative flex w-full justify-start flex-col items-center min-h-screen pt-[10vw] pb-[6vw] border-b-[1px] border-[#FFFFFF]/30">
-        <p className='interior-heading absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[9vw] text-gradient text-center whitespace-nowrap'>
+        <p className='interior-heading absolute top-[50vh] left-1/2 -translate-x-1/2 -translate-y-1/2 text-[9vw] text-gradient text-center whitespace-nowrap'>
           Interior Design
         </p>
         
@@ -77,7 +92,12 @@ const InterDesign1 = () => {
         </p>
         
         <div className="my-container interior-image mt-[4vw]">
-          <img src="/images/inter-design.png" alt="Interior Design" className='w-full object-contain' />
+          <img 
+            src="/images/inter-design.png" 
+            alt="Interior Design" 
+            className='w-full object-contain' 
+            onLoad={handleImageLoad}
+          />
         </div>
         
         <div className="solutions-section pt-[5vw] w-full">

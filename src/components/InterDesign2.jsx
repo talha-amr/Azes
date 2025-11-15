@@ -26,7 +26,7 @@ const InterDesign2 = () => {
         },
         {
             id: 3,
-            image: "/images/2.jpg",
+            image: "/images/5.jpg",
             title: "3D Visualization and Approval",
             desc1: "Present 3D renderings to help visualize the final design",
             desc2: "Make adjustments based on client feedback before finalizing the plan."
