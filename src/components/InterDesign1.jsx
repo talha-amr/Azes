@@ -34,11 +34,11 @@ const InterDesign1 = () => {
     });
 
     // Animate paragraph - fade in and move up
-    tl.from(
+    tl.to(
       ".interior-paragraph",
       {
-        opacity: 0,
-        y: 50,
+        opacity: 1,
+        y: 0,
         duration: 1,
         ease: "power2.out",
       },
@@ -46,11 +46,11 @@ const InterDesign1 = () => {
     );
 
     // Animate image
-    tl.from(
+    tl.to(
       ".interior-image",
       {
-        opacity: 0,
-        y: 50,
+        opacity: 1,
+        y: 0,
         duration: 1,
         ease: "power2.out",
       },
@@ -58,11 +58,11 @@ const InterDesign1 = () => {
     );
 
     // Animate solutions section
-    tl.from(
+    tl.to(
       ".solutions-section",
       {
-        opacity: 0,
-        y: 50,
+        opacity: 1,
+        y: 0,
         duration: 1,
         ease: "power2.out",
       },
@@ -80,18 +80,20 @@ const InterDesign1 = () => {
 
   return (
     <div className='min-h-screen theme-blue'>
-      
-      
       <div className="interior-section relative flex w-full justify-start flex-col items-center min-h-screen pt-[10vw] pb-[6vw] border-b-[1px] border-[#FFFFFF]/30">
+
+        {/* Heading */}
         <p className='interior-heading absolute top-[50vh] left-1/2 -translate-x-1/2 -translate-y-1/2 text-[9vw] text-gradient text-center whitespace-nowrap'>
           Interior Design
         </p>
-        
-        <p className='interior-paragraph text-gradient text-center text-[1vw] w-[40%] mt-[2vw]'>
+
+        {/* Paragraph */}
+        <p className='interior-paragraph opacity-0 text-gradient text-center text-[1vw] w-[40%] mt-[2vw]'>
           Step into a world where interiors are not just functional but works of art. Our innovative interior design concepts breathe life into new and existing spaces. Collaborate with us to create interiors that are both aesthetically pleasing and ergonomically sound, transforming your surroundings into a reflection of your style.
         </p>
-        
-        <div className="my-container interior-image mt-[4vw]">
+
+        {/* Image */}
+        <div className="my-container interior-image opacity-0 mt-[4vw]">
           <img 
             src="/images/inter-design.png" 
             alt="Interior Design" 
@@ -99,8 +101,9 @@ const InterDesign1 = () => {
             onLoad={handleImageLoad}
           />
         </div>
-        
-        <div className="solutions-section pt-[5vw] w-full">
+
+        {/* Solutions Section */}
+        <div className="solutions-section opacity-0 pt-[5vw] w-full">
           <div className="my-container flex justify-between items-start w-full">
             <p className='text-[#E7E7E8]/50 w-[50%] text-[1vw]'>SOLUTIONS</p>
             <div className='space-y-[1vw] w-[50%]'>
@@ -113,6 +116,7 @@ const InterDesign1 = () => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );
