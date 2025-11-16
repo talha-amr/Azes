@@ -61,37 +61,40 @@ const About3 = () => {
                     </div>
                 </div>
             </div>
-            <div className="my-container">
-                <div className="grid grid-cols-3">
-                    {values.map((value, index) => {
-                        const isNotLastColumn = (index + 1) % 3 !== 0;
-                        const isNotLastRow = index < values.length - 3;
-                        return (
-                            <div
-                                key={value.id}
-                                className={`p-[3vw] relative ${isNotLastRow ? 'border-b border-[#72767B]' : ''}`}
-                                style={{
-                                    borderBottomWidth: isNotLastRow ? '0.05vw' : '0'
-                                }}
-                            >
-                                {isNotLastColumn && (
-                                    <div
-                                        className="absolute right-0 top-[2vw] bottom-[2vw] bg-[#72767B]"
-                                        style={{ width: '0.05vw' }}
-                                    />
-                                )}
-                                <h3 className='text-[1.6vw] font-semibold text-[#1a1a1a] mb-[1vw]'>
-                                    {value.title}
-                                </h3>
-                                <p className='text-[1vw] text-[#666] leading-[1.6]'>
-                                    {value.description}
-                                </p>
-                            </div>
-                        );
-                    })}
-                </div>
-            </div>
+<div className="my-container">
+    <div className="grid grid-cols-3">
+        {values.map((value, index) => {
+            const isNotLastColumn = (index + 1) % 3 !== 0;
+            const isNotLastRow = index < values.length - 3;
+            const isFirstColumn = [1, 4, 7].includes(value.id);
+            const isLastColumn = [3, 6, 9].includes(value.id);
             
+            return (
+                <div
+                    key={value.id}
+                    className={`${isFirstColumn ? 'pl-0' : ''} ${isLastColumn ? 'pr-0' : ''} p-[3vw] relative ${isNotLastRow ? 'border-b border-[#72767B]' : ''}`}
+                    style={{
+                        borderBottomWidth: isNotLastRow ? '0.05vw' : '0'
+                    }}
+                >
+                    {isNotLastColumn && (
+                        <div
+                            className="absolute right-0 top-[2vw] bottom-[2vw] bg-[#72767B]"
+                            style={{ width: '0.05vw' }}
+                        />
+                    )}
+                    <h3 className='text-[1.6vw] font-semibold text-[#1a1a1a] mb-[1vw]'>
+                        {value.title}
+                    </h3>
+                    <p className='text-[1vw] text-[#666] leading-[1.6]'>
+                        {value.description}
+                    </p>
+                </div>
+            );
+        })}
+    </div>
+</div>
+
         </>
     )
 }
