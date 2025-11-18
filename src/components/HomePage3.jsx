@@ -8,76 +8,89 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const HomePage3 = () => {
-  useGSAP(() => {
-    // Correct SplitText usage
-    const headingSplit = new SplitText(".stats-heading", {
-      type: "lines, words",
-      linesClass: "split-line"
-    });
+ useGSAP(() => {
+  const headingSplit = new SplitText(".stats-heading", {
+    type: "lines",
+    linesClass: "line-child"
+  });
+  const paragraphSplit = new SplitText(".stats-paragraph", {
+    type: "lines",
+    linesClass: "line-child"
+  });
 
-    const paragraphSplit = new SplitText(".stats-paragraph", {
-      type: "lines, words",
-      linesClass: "split-line"
-    });
+  // Wrap each line in a parent for overflow control
+  const headingParent = new SplitText(".stats-heading", {
+    type: "lines",
+    linesClass: "line-parent"
+  });
+  const paragraphParent = new SplitText(".stats-paragraph", {
+    type: "lines",
+    linesClass: "line-parent"
+  });
 
-    // Allow GSAP to handle layout naturally
-    gsap.set(".split-line", { overflow: "hidden" });
+  // Set overflow hidden on parents
+  gsap.set(".line-parent", { overflow: "hidden" });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".theme-blue",
-        start: "20% 80%",
-        toggleActions: "play none none none",
-      },
-    });
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".theme-blue",
+      start: "20% 80%",
+      end: "bottom 40%",
+      toggleActions: "play none none none",
+    },
+  });
 
-    // Animate logo
-    tl.from(".stats-logo", {
-      y: 60,
+  // Animate logo
+  tl.from(".stats-logo", {
+    y: 60,
+    opacity: 0,
+    duration: 1.2,
+    ease: "power3.out",
+  });
+
+  // Animate heading lines
+  tl.from(
+    headingSplit.lines,
+    {
+      y: 40,
+      duration: 1,
+      ease: "power3.out",
+      stagger: 0.08,
+    },
+    "-=0.8"
+  );
+
+  // Animate paragraph lines
+  tl.from(
+    paragraphSplit.lines,
+    {
+      y: 30,
+      duration: 0.9,
+      ease: "power3.out",
+      stagger: 0.06,
+    },
+    "-=0.7"
+  );
+
+  // Animate stats items
+  tl.from(
+    ".stat-item",
+    {
+      y: 50,
       opacity: 0,
       duration: 1.2,
       ease: "power3.out",
-    });
+      stagger: 0.15,
+    },
+    "-=0.6"
+  );
 
-    // Animate heading lines
-    tl.from(
-      headingSplit.lines,
-      {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        stagger: 0.08,
-      },
-      "-=0.8"
-    );
-
-    // Animate paragraph lines
-    tl.from(
-      paragraphSplit.lines,
-      {
-        y: 30,
-        opacity: 0,
-        duration: 0.9,
-        ease: "power3.out",
-        stagger: 0.06,
-      },
-      "-=0.7"
-    );
-
-    // Animate stats items
-    tl.from(
-      ".stat-item",
-      {
-        y: 50,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power3.out",
-        stagger: 0.15,
-      },
-      "-=0.6"
-    );
-  }, []);
+  // Add a class that will trigger the gradient AFTER animation
+  tl.call(() => {
+    document.querySelector(".stats-heading").classList.add("gradient-active");
+    document.querySelector(".stats-paragraph").classList.add("gradient-active");
+  });
+}, []);
 
   return (
     <div className="min-h-dvh w-full theme-blue">
@@ -91,10 +104,10 @@ const HomePage3 = () => {
               className="w-[30vw] stats-logo"
             />
             <div className="pt-[6vw] max-w-[70%]">
-              <h3 className="text-gradient font-bold mb-[1vw] text-[2.2vw] stats-heading leading-tight">
+              <h3 className="font-bold mb-[1vw] text-[2.2vw] stats-heading leading-tight">
                 PROJECTS NUMBERS
               </h3>
-              <p className="text-gradient font-regular text-[1.2vw] stats-paragraph leading-normal">
+              <p className=" font-regular text-[1.2vw] stats-paragraph leading-normal">
                 This modern art gallery and cultural hub, situated on a 2-acre plot (87,120 sqft),
                 aims to create an immersive experience by blending architecture with curated art installations.
               </p>

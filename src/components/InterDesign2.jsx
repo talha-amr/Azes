@@ -30,60 +30,47 @@ const InterDesign2 = () => {
 
     // --- Preload images ---
     useEffect(() => {
-        let mounted = true;
-        const promises = sections.map(sec => new Promise((resolve) => {
-            const img = new Image();
-            img.src = sec.image;
-            img.onload = () => resolve();
-            img.onerror = () => resolve(); // resolve on error so app still runs
-        }));
+    const firstImage = new Image();
+    firstImage.src = sections[0].image;
 
-        Promise.all(promises).then(() => {
-            if (!mounted) return;
-            setImagesLoaded(true);
-            // allow layout to settle then refresh ScrollTrigger
-            setTimeout(() => ScrollTrigger.refresh(), 80);
-        });
+    firstImage.onload = () => {
+        setImagesLoaded(true);
+        setTimeout(() => ScrollTrigger.refresh(), 50);
+    };
 
-        return () => { mounted = false; };
-    }, []);
+    firstImage.onerror = () => {
+        setImagesLoaded(true);
+    };
+}, []);
 
+// --- Create ScrollTrigger as soon as imagesLoaded === true ---
+useGSAP(() => {
+    if (!imagesLoaded) return;
 
-    // --- Create single ScrollTrigger that drives progress ---
-    useGSAP(() => {
-        if (!imagesLoaded) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-        const container = containerRef.current;
-        if (!container) return;
+    const total = sections.length;
+    const totalScroll = Math.max((total - 1) * window.innerHeight, window.innerHeight);
 
-        const total = sections.length;
-        // total scroll distance: transitions count * viewport height
-        const totalScroll = Math.max((total - 1) * window.innerHeight, window.innerHeight);
+    const st = ScrollTrigger.create({
+        trigger: container,
+        start: "top top",
+        end: `+=${totalScroll}`,
+        scrub: true,
+        pin: true,
+        onUpdate: (self) => {
+            const index = Math.round(self.progress * (total - 1));
+            setActiveIndex(prev => (prev === index ? prev : index));
+        }
+    });
 
-        // create ScrollTrigger that drives progress (scrub true for smooth)
-        const st = ScrollTrigger.create({
-            trigger: container,
-            start: "top top",
-            end: `+=${totalScroll}`,
-            scrub: true,
-            pin: true,
-            onUpdate: (self) => {
-                // use progress to compute index 0..total-1
-                // multiply by (total-1) so last progress maps to last index
-                const index = Math.round(self.progress * (total - 1));
-                setActiveIndex(prev => (prev === index ? prev : index));
-            }
-        });
+    ScrollTrigger.refresh();
 
-        // safety refresh
-        ScrollTrigger.refresh();
-
-        return () => {
-            if (st) st.kill();
-            // also kill any ScrollTrigger created by gsap
-            // ScrollTrigger.getAll().forEach(t => t.kill());
-        };
-    }, [imagesLoaded, sections.length]);
+    return () => {
+        if (st) st.kill();
+    };
+}, [imagesLoaded]);
 
 
     return (

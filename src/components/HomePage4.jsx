@@ -130,7 +130,7 @@ tl.from(headingSplit.lines, {
                 Azes can be trusted to deliver residential and commercial
                 groundworks projects,
               </h2>
-              <p className="text-[1.3vw] paragraph-text">
+              <p className="text-[1.3vw] paragraph-text ">
                 This modern art gallery and cultural hub, situated on a 2-acre
                 plot (87,120 sqft), aim to create an immersive experience by
                 seamlessly blending contemporary architecture with curated art
